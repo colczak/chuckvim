@@ -11,6 +11,10 @@
 :set tabstop=2
 :set expandtab
 
+:set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P=
+
+:let g:NERDTreeChDirMode=2
+
 " <leader> is whatever the heck mapleader is set to, not the most obvious
 :let mapleader = ","
 
@@ -29,11 +33,14 @@
 :map <D-t> :call vimlib#projectFuzzyFind()<Enter>
 :nmap <M-t> :call vimlib#projectFuzzyFind()<Enter>
 :macm Edit.Find.Find\.\.\. key=<nop>
-:map <D-f> :Ggrep 
-:nmap <M-f> :Ggrep 
+":map <D-f> :Ggrep 
+":nmap <M-f> :Ggrep 
+:map <D-f> :VimlibSearch
+:nmap <M-f> :VimlibSearch
 :macm Tools.Make key=<nop>
 :map <D-b> :FufBuffer<Enter>
 :nmap <M-b> :FufBuffer<Enter>
+:macm File.Open key=<nop>
 :nmap <M-o> m`O<ESC>``
 :macm File.Close key=<nop>
 :map <D-w> :BufOnly<Enter>:BD<Enter>
