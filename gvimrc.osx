@@ -1,16 +1,9 @@
-
-:colorscheme railscasts 
+:colorscheme railscasts
 
 :set wildmenu
+:set wildmode=list:longest
 :set number
 
-" =============  MacVim ==============
-
-set guifont=Monaco:h14
-set guioptions-=T
-
-" make wd relative to path
-"autocmd BufEnter * lcd %:p:h
 :set autochdir
 
 :set softtabstop=2
@@ -18,12 +11,50 @@ set guioptions-=T
 :set tabstop=2
 :set expandtab
 
+" <leader> is whatever the heck mapleader is set to, not the most obvious
+:let mapleader = ","
+
+:set macmeta
 :map <F5> :NERDTreeToggle<Enter>
-:map <M-o> m`O<ESC>``
-":map <C-T> :CommandT<Enter>
-:map <C-T> :FufFileWithCurrentBufferDir<Enter> 
-:map <F7> :BD<Enter> 
+:map <leader>n :bnext<Enter>
+:map <leader>m :bprev<Enter>
+:macmenu File.New\ Window key=<nop>
+:map <D-n> :bnext<Enter>
+:nmap <M-n> :bnext<Enter>
+:macm File.Print key=<nop>
+:map <D-p> :bprev<Enter>
+:nmap <M-p> :bprev<Enter>
+:map <M-g> :call vimlib#gitDir()<Enter>
+:macm File.New\ Tab key=<nop>
+:map <D-t> :call vimlib#projectFuzzyFind()<Enter>
+:nmap <M-t> :call vimlib#projectFuzzyFind()<Enter>
+:macm Edit.Find.Find\.\.\. key=<nop>
+:map <D-f> :Ggrep 
+:nmap <M-f> :Ggrep 
+:macm Tools.Make key=<nop>
+:map <D-b> :FufBuffer<Enter>
+:nmap <M-b> :FufBuffer<Enter>
+:nmap <M-o> m`O<ESC>``
+:macm File.Close key=<nop>
+:map <D-w> :BufOnly<Enter>:BD<Enter>
+:nmap <M-w> :BufOnly<Enter>:BD<Enter>
+
+"Comment and uncomment ruby, not the best but works and fast
+:map <M-/> :s/^/#/<Enter>
+:map <M-?> :s/^#//<Enter>
+
+"If on a spec or unit test will run that test
+:map <M-r> :Rake<Enter>
+
+" One mapping to select them ALL!  wow you gotta get this
+:nmap <C-a> ggVG
+
+" Kill current buffer but leave winder, uses bufkill plugin
+:map <F8> :BD<Enter> 
 :map <F6> :ConqueTerm bash<Enter> 
 :map <F2> :OpenBrowser http://localhost:3000<Enter>
 
-
+" Insert text at cursor
+:macm Tools.List\ Errors key=<nop>
+:map! <D-l> Rails.logger.debug "************
+:map! <M-l> Rails.logger.debug "************
